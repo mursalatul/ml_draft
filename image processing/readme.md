@@ -12,7 +12,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 	•	ImageDataGenerator: A utility to load, augment, and preprocess images from directories for training and validation.
 
 2. Set Up Image Preprocessing
-```
+```python
 train_datagen = ImageDataGenerator(
     rescale=1.0/255.0,  # Normalize image data
     shear_range=0.2,
