@@ -6,10 +6,10 @@ import tensorflow as tf
 from tensorflow.keras import layers, models
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 ```
-	•	tensorflow: The main library for building and training deep learning models.
-	•	layers: Provides various types of layers like Conv2D, Dense, MaxPooling2D, etc., to construct the neural network.
-	•	models: Provides a way to build models like Sequential for stacking layers.
-	•	ImageDataGenerator: A utility to load, augment, and preprocess images from directories for training and validation.
+•	tensorflow: The main library for building and training deep learning models.
+•	layers: Provides various types of layers like Conv2D, Dense, MaxPooling2D, etc., to construct the neural network.
+•	models: Provides a way to build models like Sequential for stacking layers.
+•	ImageDataGenerator: A utility to load, augment, and preprocess images from directories for training and validation.
 
 2. Set Up Image Preprocessing
 ```python
@@ -30,7 +30,7 @@ test_datagen = ImageDataGenerator(rescale=1.0/255.0)
 	•	test_datagen: Only normalizes the pixel values for the test data since we don’t want to augment test images.
 
 3. Load Images from Directories
-```
+```python
 train_data = train_datagen.flow_from_directory(
     'path_to_train_data',
     target_size=(64, 64),  # Resize the images
@@ -54,7 +54,7 @@ test_data = test_datagen.flow_from_directory(
 	•	test_data: Loads and processes the images for the test dataset.
 
 4. Define the CNN Model
-```
+```python
 model = models.Sequential([
     # First Convolutional Layer
     layers.Conv2D(16, (3, 3), activation='relu', input_shape=(64, 64, 3)),
@@ -118,7 +118,7 @@ layers.Dense(n, activation='softmax')
 	•	Softmax activation: Converts the raw outputs (logits) into probabilities for each class.
 
 5. Compile the Model
-```
+```python
 model.compile(optimizer='adam',
               loss='categorical_crossentropy',  # Categorical cross-entropy for multiclass
               metrics=['accuracy'])
@@ -128,13 +128,13 @@ model.compile(optimizer='adam',
 	•	metrics=[‘accuracy’]: Accuracy will be calculated and displayed during training and evaluation.
 
 6. Model Summary
-```
+```python
 model.summary()
 ```
 	•	This prints a summary of the model architecture, showing the number of parameters, layer types, and output shapes.
 
 7. Train the Model
-```
+```python
 history = model.fit(
     train_data,
     epochs=num_epochs,
@@ -147,7 +147,7 @@ history = model.fit(
 	•	validation_data=test_data: Used to evaluate the model after each epoch (during training).
 
 8. Evaluate the Model
-```
+```python
 test_loss, test_accuracy = model.evaluate(test_data)
 print(f"Test Accuracy: {test_accuracy*100:.2f}%")
 ```
