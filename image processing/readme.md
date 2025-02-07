@@ -5,14 +5,14 @@ This document explains **multiclass image classification** using a Convolutional
 import tensorflow as tf
 from tensorflow.keras import layers, models
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-
+```
 	•	tensorflow: The main library for building and training deep learning models.
 	•	layers: Provides various types of layers like Conv2D, Dense, MaxPooling2D, etc., to construct the neural network.
 	•	models: Provides a way to build models like Sequential for stacking layers.
 	•	ImageDataGenerator: A utility to load, augment, and preprocess images from directories for training and validation.
 
 2. Set Up Image Preprocessing
-
+```
 train_datagen = ImageDataGenerator(
     rescale=1.0/255.0,  # Normalize image data
     shear_range=0.2,
@@ -21,7 +21,7 @@ train_datagen = ImageDataGenerator(
 )
 
 test_datagen = ImageDataGenerator(rescale=1.0/255.0)
-
+```
 	•	train_datagen: This applies transformations and augmentations to the training images to help improve generalization:
 	•	rescale=1.0/255.0: Normalizes the image pixel values from the range [0, 255] to [0, 1].
 	•	shear_range=0.2: Randomly applies shear transformations.
