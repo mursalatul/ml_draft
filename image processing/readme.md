@@ -30,7 +30,7 @@ test_datagen = ImageDataGenerator(rescale=1.0/255.0)
 	•	test_datagen: Only normalizes the pixel values for the test data since we don’t want to augment test images.
 
 3. Load Images from Directories
-
+```
 train_data = train_datagen.flow_from_directory(
     'path_to_train_data',
     target_size=(64, 64),  # Resize the images
@@ -43,7 +43,7 @@ test_data = test_datagen.flow_from_directory(
     target_size=(64, 64),  # Resize the images
     batch_size=32,
     class_mode='categorical'  # For multiclass classification
-)
+)```
 
 	•	flow_from_directory():
 	•	Loads images from a directory, processes them, and generates batches of images and labels.
@@ -54,7 +54,7 @@ test_data = test_datagen.flow_from_directory(
 	•	test_data: Loads and processes the images for the test dataset.
 
 4. Define the CNN Model
-
+```
 model = models.Sequential([
     # First Convolutional Layer
     layers.Conv2D(16, (3, 3), activation='relu', input_shape=(64, 64, 3)),
@@ -72,7 +72,7 @@ model = models.Sequential([
     
     # Output layer for multiclass classification
     layers.Dense(n, activation='softmax')  # Softmax activation for multiclass classification
-])
+])```
 
 	•	Sequential(): Creates a linear stack of layers.
 	•	First Convolutional Layer:
@@ -118,39 +118,39 @@ layers.Dense(n, activation='softmax')
 	•	Softmax activation: Converts the raw outputs (logits) into probabilities for each class.
 
 5. Compile the Model
-
+```
 model.compile(optimizer='adam',
               loss='categorical_crossentropy',  # Categorical cross-entropy for multiclass
               metrics=['accuracy'])
-
+```
 	•	optimizer=‘adam’: Adam optimizer is used, which is efficient for training deep learning models.
 	•	loss=‘categorical_crossentropy’: The loss function used for multiclass classification. It compares the predicted class probabilities with the true one-hot encoded labels.
 	•	metrics=[‘accuracy’]: Accuracy will be calculated and displayed during training and evaluation.
 
 6. Model Summary
-
+```
 model.summary()
-
+```
 	•	This prints a summary of the model architecture, showing the number of parameters, layer types, and output shapes.
 
 7. Train the Model
-
+```
 history = model.fit(
     train_data,
     epochs=num_epochs,
     validation_data=test_data
 )
-
+```
 	•	fit(): Starts the training process.
 	•	train_data: The input data for training.
 	•	epochs=num_epochs: The number of times the entire dataset will be passed through the network.
 	•	validation_data=test_data: Used to evaluate the model after each epoch (during training).
 
 8. Evaluate the Model
-
+```
 test_loss, test_accuracy = model.evaluate(test_data)
 print(f"Test Accuracy: {test_accuracy*100:.2f}%")
-
+```
 	•	evaluate(): Computes the loss and accuracy of the model on the test data.
 	•	It returns the loss and accuracy, which are printed.
 
