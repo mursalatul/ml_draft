@@ -6,10 +6,10 @@ import tensorflow as tf
 from tensorflow.keras import layers, models
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 ```
-•	tensorflow: The main library for building and training deep learning models.
-•	layers: Provides various types of layers like Conv2D, Dense, MaxPooling2D, etc., to construct the neural network.
-•	models: Provides a way to build models like Sequential for stacking layers.
-•	ImageDataGenerator: A utility to load, augment, and preprocess images from directories for training and validation.
+    •	tensorflow: The main library for building and training deep learning models.
+    •	layers: Provides various types of layers like Conv2D, Dense, MaxPooling2D, etc., to construct the neural network.
+    •	models: Provides a way to build models like Sequential for stacking layers.
+    •	ImageDataGenerator: A utility to load, augment, and preprocess images from directories for training and validation.
 
 2. Set Up Image Preprocessing
 ```python
@@ -43,8 +43,8 @@ test_data = test_datagen.flow_from_directory(
     target_size=(64, 64),  # Resize the images
     batch_size=32,
     class_mode='categorical'  # For multiclass classification
-)```
-
+)
+```
 	•	flow_from_directory():
 	•	Loads images from a directory, processes them, and generates batches of images and labels.
 	•	target_size=(64, 64): Resizes the images to 64x64 pixels (you can adjust this based on your data).
@@ -72,7 +72,8 @@ model = models.Sequential([
     
     # Output layer for multiclass classification
     layers.Dense(n, activation='softmax')  # Softmax activation for multiclass classification
-])```
+])
+```
 
 	•	Sequential(): Creates a linear stack of layers.
 	•	First Convolutional Layer:
